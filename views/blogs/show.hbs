@@ -1,14 +1,22 @@
-<div>{{ blog.title }}</div>
-<div>
-    {{!--<span> {{ blog.created.toDateString() }}</span>--}}
+  {{!--<span> {{ blog.created.toDateString() }}</span>--}}
+<div class="container center-align">
+    <div class="row">
+        <div class="col s12 m12">
+            <div class="card">
+            <div class="card-image">
+                <img src="{{blog.image}}">
+                <span class="card-title">{{blog.title}}</span>
+            </div>
+            <div class="card-content">
+                <p>{{blog.body}}</p>
+            </div>
+            <form action = "/blogs/{{blog._id}}/edit" method = "GET">
+                <button class="waves-effect waves-light btn ">Edit</button>
+            </form>
+            <form action = "/blogs/{{blog._id}}?_method=DELETE" method = "POST">
+                <button class="waves-effect waves-light btn red darken-4 right-align">Delete</button>
+            </form>
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-    <img src="{{ blog.image }}">
-</div>
-<div>
-    <p>{{ blog.body }}</p>
-</div>
-<a href="/blogs/{{blog._id}}/edit">Edit</a>
-<form action = "/blogs/{{blog._id}}?_method=DELETE" method = "POST">
-    <button>Delete</button>
-</form>

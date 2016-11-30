@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
 }
 
 a {
@@ -11,3 +12,13 @@ a {
   margin-right: 1%;
   margin-top: 1%;
 }
+
+form{
+  display: inline;
+}
+.brand-logo{
+  font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+/*.card-image{
+  height: 400px;
+}*/

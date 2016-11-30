@@ -9,7 +9,6 @@ const path = require('path');
 const favicon = require('serve-favicon');
 
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
 
 const morgan = require('morgan');
@@ -20,12 +19,13 @@ const flash = require('connect-flash');
 const expressSanitizer = require('express-sanitizer');
 const methodOverride = require('method-override');
 
-const index = require('./routes/index');
-const auth = require('./routes/auth');
-const blog = require('./routes/blog');
-
 const app = express();
 mongoose.connect(`mongodb://starsquid:souptime@ds113668.mlab.com:13668/the_cosmic_whale`)
+
+const index = require('./routes/index');
+const blog = require('./routes/blog');
+const auth = require('./routes/auth')(passport);
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,11 +34,11 @@ app.set('view engine', 'hbs');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(morgan('dev'));
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
-app.use(cookieParser());
 
 //passport and auth
 app.use(session({
@@ -53,16 +53,17 @@ app.use(passport.session());
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// set up CORS
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PATCH, DELETE, OPTIONS');
+    next();
+});
+
 app.use('/', index);
-app.use('/auth', auth);
 app.use('/blog', blog);
-
-
-//set up passport
-const User = require('./models/user');
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+app.use('/auth', auth);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

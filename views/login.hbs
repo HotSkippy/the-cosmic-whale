@@ -1,4 +1,7 @@
 <div class="container center">
+    <h1>{{ user.local.email }}</h1>
+    <h1>{{ user.local.password }}</h1>
+    <h1>{{ user._id }}</h1>
     <h1>Login or Signup</h1>
     <button data-target="loginModal" class="btn waves-effect waves-light">
     <i class="material-icons left">account_circle</i>Login</button>
@@ -7,34 +10,41 @@
 </div>
 
 <div id="loginModal" class="modal">
+    <div>
+        <a class="btn-floating btn-small waves-effect waves-light red right exit modal-action modal-close">
+            <i class="material-icons">eject</i></a>
+    </div>
     <div class="modal-content">
-      <div class="row">
-          <form class="col s12">
-              <div class="row">
-                  <div class="input-field col s12">
-                      <input id="email" type="email" class="validate">
-                      <label for="email" data-error="Please enter a valid email" data-success="right">Email</label>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="input-field col s12">
-                      <input id="password" type="password" class="validate">
-                      <label for="password">Password</label>
-                  </div>
-              </div>
-              <div class="modal-footer">
-                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn"
-                  type="submit"><i class="material-icons left">input</i>Submit</a>
-              </div>
-          </form>
-      </div>
+        <div class="row">
+            <form class="col s12" id="loginForm" method="post">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="email" type="email" class="validate">
+                        <label for="email" data-error="Please enter a valid email" data-success="right">Email</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="password" type="password" class="validate">
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a id="submitLogin" href="#!" class="modal-action modal-close waves-effect waves-green btn" type="submit"><i class="material-icons left">input</i>Submit</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
 <div id="signupModal" class="modal">
+    <div>
+        <a class="btn-floating btn-small waves-effect waves-light red right exit modal-action modal-close">
+            <i class="material-icons">eject</i></a>
+    </div>
     <div class="modal-content">
         <div class="row">
-            <form class="col s12">
+            <form class="col s12" id="signupForm" method="post">
                 <div class="row">
                     <div class="input-field col s6">
                         <input placeholder="First Name" id="first_name" type="text" class="validate">
@@ -58,8 +68,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn"
-                    type="submit"><i class="material-icons left">input</i>Submit</a>
+                    <a id="submitSignup" href="#!" class="waves-effect waves-green btn" type="submit"><i class="material-icons left">input</i>Submit</a>
                 </div>
             </form>
         </div>

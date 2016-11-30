@@ -55,7 +55,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/auth', auth);
-app.use('/blog', blog);
+app.use('/blogs', blog);
 
 
 //set up passport

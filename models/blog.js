@@ -16,27 +16,27 @@ var schema = new Schema({
         type: String,
         required: true
     },
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    },
-    comments: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Comment'
-    }],
+    // user: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'User'
+    // },
+    // comments: [{
+    //   type: Schema.Types.ObjectId,
+    //   ref: 'Comment'
+    // }],
     created: {
       type: Date,
       default: Date.now
     }
 });
 
-schema.post('remove', (blog) => {
-    User.findById(blog.user, (err, user) => {
-      if (blog.user.isAdmin === true){
-        user.blog.pull(blog)
-        user.save();
-      } 
-    });
-});
+
+// schema.post('remove', (message) => {
+//     User.findById(message.user, (err, user) => {
+//         user.messages.pull(message)
+//         user.save();
+//     });
+// });
+
 
 module.exports = mongoose.model('Blog', schema);

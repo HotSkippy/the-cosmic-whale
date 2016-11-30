@@ -1,0 +1,14 @@
+<div>{{ blog.title }}</div>
+<div>
+    {{!--<span> {{ blog.created.toDateString() }}</span>--}}
+</div>
+<div>
+    <img src="{{ blog.image }}">
+</div>
+<div>
+    <p>{{ blog.body }}</p>
+</div>
+<a href="/blogs/{{blog._id}}/edit">Edit</a>
+<form action = "/blogs/{{blog._id}}?_method=DELETE" method = "POST">
+    <button>Delete</button>
+</form>

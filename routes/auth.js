@@ -1,7 +1,7 @@
 'use strict'
 
 const express = require('express');
-const passport = require('passport');
+// const passport = require('passport');
 const User = require('../models/user');
 const router = express.Router();
 
@@ -12,7 +12,7 @@ const isLoggedIn = (req, res, next) => {
     res.redirect('/')
 }
 
-module.exports = function(passport) {
+module.exports = function(app, passport) {
     router.get('/', (req, res) => {
         res.render('login', {
             user: req.user
@@ -25,14 +25,11 @@ module.exports = function(passport) {
         });
     })
 
-    router.post('/signup', (req, res) => {
-			console.log(req.body, "i am in the auth route");
-		});
-		// passport.authenticate('local-signup', {
-    //     successRedirect: '/index',
-    //     failureRedirect: '/login',
-    //     faiulreFlash: true
-    // }),
+    router.post('/signup', passport.authenticate('local-signup', {
+        successRedirect: '/',
+        failureRedirect: '/auth',
+        failureFlash: true
+    }));
 
     router.get('/login', (req, res) => {
         res.render('login', {
@@ -43,7 +40,7 @@ module.exports = function(passport) {
 
     router.post('/login', passport.authenticate('local-login', {
         successRedirect: '/index',
-        failureRedirect: '/login',
+        failureRedirect: '/auth',
         faiulreFlash: true
     }));
 

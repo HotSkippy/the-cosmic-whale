@@ -10,7 +10,6 @@ const schema = new Schema({
     local: {
         firstName: {
             type: String,
-            required: true
         },
         lastName: {
             type: String,
@@ -29,10 +28,10 @@ const schema = new Schema({
             default: false,
             required: true
         },
-        comments: [{
-            type: Schema.Types.ObjectId,
-            ref: 'Message'
-        }],
+        // comments: [{
+        //     type: Schema.Types.ObjectId,
+        //     ref: 'Message'
+        // }],
         created: {
             type: Date,
             default: Date.now

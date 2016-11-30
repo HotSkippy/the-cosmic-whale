@@ -6,7 +6,9 @@ const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/user');
 
 module.exports = function(passport) {
+console.log("passport here");
     passport.serializeUser((user, done) => {
+      console.log(user, "user");
         done(null, user.id)
     });
 
@@ -27,12 +29,14 @@ module.exports = function(passport) {
                 'local.email': email
             }, (err, user) => {
                 if (err) {
-                    return done
+                    return done(err)
                 }
                 if (user) {
                     return done(null, false, req.flash('signupMessage'))
                 } else {
                     let newUser = new User();
+                    newUser.local.firstName = req.body.firstName
+                    newUser.local.lastName = req.body.lastName
                     newUser.local.email = email;
                     newUser.local.password = newUser.generateHash(password);
 

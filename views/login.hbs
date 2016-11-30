@@ -16,7 +16,7 @@
     </div>
     <div class="modal-content">
         <div class="row">
-            <form class="col s12" id="loginForm" method="post">
+            <form class="col s12" action="/login" method="post">
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="email" type="email" name="email" class="validate">
@@ -44,15 +44,15 @@
     </div>
     <div class="modal-content">
         <div class="row">
-            <form class="col s12" id="signupForm">
+            <form class="col s12" id="signupForm" action="/auth/signup" method="post">
                 <div class="row">
                     <div class="input-field col s6">
-                        <input placeholder="First Name" id="first_name" name="firstName" type="text" class="validate">
-                        <label for="first_name">First Name</label>
+                        <input placeholder="First Name" id="firstName" name="firstName" type="text" class="validate">
+                        <label for="firstName">First Name</label>
                     </div>
                     <div class="input-field col s6">
-                        <input placeholder="Last Name" id="last_name" name="lastName" type="text" class="validate">
-                        <label for="last_name">Last Name</label>
+                        <input placeholder="Last Name" id="lastName" name="lastName" type="text" class="validate">
+                        <label for="lastName">Last Name</label>
                     </div>
                 </div>
                 <div class="row">
@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a id="submitSignup" class="waves-effect waves-green btn" type="submit"><i class="material-icons left">input</i>Submit</a>
+                    <button id="submitSignup" class="waves-effect waves-green btn" type="submit"><i class="material-icons left">input</i>Submit</button>
                 </div>
             </form>
         </div>

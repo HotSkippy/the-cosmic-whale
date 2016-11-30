@@ -7,8 +7,8 @@ if (process.env.NODE_ENV !== `production`) {
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
-
 const passport = require('passport');
+require('./config/passport')(passport);
 const mongoose = require('mongoose');
 
 const morgan = require('morgan');
@@ -20,11 +20,11 @@ const expressSanitizer = require('express-sanitizer');
 const methodOverride = require('method-override');
 
 const app = express();
-mongoose.connect(`mongodb://starsquid:souptime@ds113668.mlab.com:13668/the_cosmic_whale`)
+mongoose.connect(`mongodb://localhost:27017/cosmic_whale`)
 
 const index = require('./routes/index');
 const blog = require('./routes/blog');
-const auth = require('./routes/auth')(passport);
+const auth = require('./routes/auth')(app, passport);
 
 
 // view engine setup
@@ -37,7 +37,7 @@ app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: false
+  extended: true
 }));
 
 //passport and auth

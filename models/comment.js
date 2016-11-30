@@ -23,9 +23,9 @@ var schema = new Schema({
     }
 });
 
-schema.post('remove', (message) => {
-    User.findById(message.user, (err, user) => {
-        user.messages.pull(message)
+schema.post('remove', (comment) => {
+    User.findById(comment.user, (err, user) => {
+        user.comment.pull(comment)
         user.save();
     });
 });

@@ -1,8 +1,12 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-//require passport/passport local.. make middleware
+'use strict'
 
-var schema = new Schema({
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt-nodejs')
+const Schema = mongoose.Schema;
+const passportLocalMongoose = require('passport-local-mongoose');
+
+
+const schema = new Schema({
     firstName: {
         type: String,
         required: true
@@ -35,5 +39,15 @@ var schema = new Schema({
     }
 });
 
+schema.plugin(passportLocalMongoose)
+
+// // hash password
+// schema.methods.generateHash = password =>
+//   bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+//
+// // check password
+//
+// schema.methods.validatePassword = password =>
+//   bcrypt.compareSync(password, this.local.password);
 
 module.exports = mongoose.model('User', schema);

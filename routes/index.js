@@ -1,9 +1,13 @@
-var express = require('express');
-var router = express.Router();
+'use strict'
+
+const express = require('express');
+const router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: `The Cosmic Whale n' Shit` });
+router.get('/', (req, res, next) => {
+  res.render('index', { title: `The Cosmic Whale` });
 });
+
+// login
 
 module.exports = router;

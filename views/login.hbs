@@ -1,7 +1,9 @@
 <div class="container center">
-    <h1>{{ user.local.email }}</h1>
-    <h1>{{ user.local.password }}</h1>
-    <h1>{{ user._id }}</h1>
+    <p>email: {{ user.local.email }}</p>
+    <p>First Name: {{ user.local.firstName }}</p>
+    <p>First Name: {{ user.local.firstName }}</p>
+    <p>password: {{ user.local.password }}</p>
+    <p>user_id: {{ user._id }}</p>
     <h1>Login or Signup</h1>
     <button data-target="loginModal" class="btn waves-effect waves-light">
     <i class="material-icons left">account_circle</i>Login</button>
@@ -16,11 +18,11 @@
     </div>
     <div class="modal-content">
         <div class="row">
-            <form class="col s12" action="/login" method="post">
+            <form class="col s12" action="/auth/login" method="post">
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="email" type="email" name="email" class="validate">
-                        <label for="email" data-error="Please enter a valid email" data-success="right">Email</label>
+                        <label for="email" data-error="Please enter a valid email" data-success="Welcome!">Email</label>
                     </div>
                 </div>
                 <div class="row">
@@ -30,7 +32,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a id="submitLogin" class="modal-action modal-close waves-effect waves-green btn" type="submit"><i class="material-icons left">input</i>Submit</a>
+                    <button id="submitLogin" class="modal-action modal-close waves-effect waves-green btn" type="submit"><i class="material-icons left">input</i>Submit</button>
                 </div>
             </form>
         </div>

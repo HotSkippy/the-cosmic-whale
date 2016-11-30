@@ -6,14 +6,15 @@ const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/user');
 
 module.exports = function(passport) {
-console.log("passport here");
     passport.serializeUser((user, done) => {
-      console.log(user, "user");
-        done(null, user.id)
+        done(null, user)
     });
 
-    passport.deserializeUser((id, done) => {
-        User.findById(id, (err, user) => {
+    passport.deserializeUser((user, done) => {
+        User.findById(user._id, (err, user) => {
+          delete user.local.password;
+          delete user.local.isAdmin;
+          console.log(user.local.password, "deserializeUser");
             done(err, user);
         });
     });
@@ -23,7 +24,7 @@ console.log("passport here");
         passwordField: 'password',
         passReqToCallback: true
     }, (req, email, password, done) => {
-      console.log(req.body, email, password, "herre in passport.js");
+        console.log(req.body, email, password, "herre in passport.js");
         process.nextTick(() => {
             User.findOne({
                 'local.email': email
@@ -56,19 +57,25 @@ console.log("passport here");
         passwordField: 'password',
         passReqToCallback: true
     }, (req, email, password, done) => {
+        console.log("got ya here", req.body, email, password);
         User.findOne({
             'local.email': email
         }, (err, user) => {
+            console.log("got your user here", user);
             if (err) {
                 return done(err);
             }
             if (!user) {
+                console.log("no user");
                 return done(null, false, req.flash('loginMessage', 'Invalid email or password.'));
             }
             if (!user.validatePassword(password)) {
+                console.log(!user.validatePassword(password), "pass failing?");
                 return done(null, false, req.flash('loginMessage', 'Invalid email or password.'))
+            } else {
+                console.log(user, "user returning");
+                return done(null, user);
             }
-            return done(null, user);
         })
     }));
 };

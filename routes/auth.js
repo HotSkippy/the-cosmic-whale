@@ -14,15 +14,12 @@ const isLoggedIn = (req, res, next) => {
 
 module.exports = function(app, passport) {
     router.get('/', (req, res) => {
-        res.render('login', {
-            user: req.user
-        });
+      console.log(req.user, req.session);
+        res.render('login', {user: req.user});
     });
 
     router.get('/signup', (req, res) => {
-        res.render('signup', {
-            message: req.flash('signinMessage')
-        });
+        res.render('signup', {message: req.flash('signinMessage')});
     })
 
     router.post('/signup', passport.authenticate('local-signup', {
@@ -32,6 +29,7 @@ module.exports = function(app, passport) {
     }));
 
     router.get('/login', (req, res) => {
+      console.log(req.user, "user get /login");
         res.render('login', {
             user: req.user,
             message: req.flash('loginMessage')
@@ -39,9 +37,9 @@ module.exports = function(app, passport) {
     });
 
     router.post('/login', passport.authenticate('local-login', {
-        successRedirect: '/index',
+        successRedirect: '/',
         failureRedirect: '/auth',
-        faiulreFlash: true
+        failureFlash: true
     }));
 
     router.get('/logout', (req, res) => {

@@ -16,25 +16,25 @@ var schema = new Schema({
         type: String,
         required: true
     },
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    },
-    comments: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Comment'
-    }],
+    // user: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'User'
+    // },
+    // comments: [{
+    //   type: Schema.Types.ObjectId,
+    //   ref: 'Comment'
+    // }],
     created: {
       type: Date,
       default: Date.now
     }
 });
 
-schema.post('remove', (message) => {
-    User.findById(message.user, (err, user) => {
-        user.messages.pull(message)
-        user.save();
-    });
-});
+// schema.post('remove', (message) => {
+//     User.findById(message.user, (err, user) => {
+//         user.messages.pull(message)
+//         user.save();
+//     });
+// });
 
 module.exports = mongoose.model('Blog', schema);

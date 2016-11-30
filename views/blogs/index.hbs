@@ -1,0 +1,11 @@
+{{#each blogs}}
+
+<img src="{{this.image}}">
+<div>{{this.title}}</div>
+{{!--<span>{{this.created.toDateString()}}</span>
+<p>{{this.body.substring(0,100)}};</p>--}}
+<a href="/blogs/{{this._id}}">
+Read More
+</a>
+
+{{/each}}

@@ -25,11 +25,14 @@ module.exports = function(passport) {
         });
     })
 
-    router.post('/signup', passport.authenticate('local-signup', {
-        successRedirect: '/index',
-        failureRedirect: '/login',
-        faiulreFlash: true
-    }));
+    router.post('/signup', (req, res) => {
+			console.log(req.body, "i am in the auth route");
+		});
+		// passport.authenticate('local-signup', {
+    //     successRedirect: '/index',
+    //     failureRedirect: '/login',
+    //     faiulreFlash: true
+    // }),
 
     router.get('/login', (req, res) => {
         res.render('login', {

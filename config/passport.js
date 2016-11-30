@@ -21,6 +21,7 @@ module.exports = function(passport) {
         passwordField: 'password',
         passReqToCallback: true
     }, (req, email, password, done) => {
+      console.log(req.body, email, password, "herre in passport.js");
         process.nextTick(() => {
             User.findOne({
                 'local.email': email
@@ -32,7 +33,6 @@ module.exports = function(passport) {
                     return done(null, false, req.flash('signupMessage'))
                 } else {
                     let newUser = new User();
-
                     newUser.local.email = email;
                     newUser.local.password = newUser.generateHash(password);
 

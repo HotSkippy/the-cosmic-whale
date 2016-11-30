@@ -19,18 +19,18 @@
             <form class="col s12" id="loginForm" method="post">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="email" type="email" class="validate">
+                        <input id="email" type="email" name="email" class="validate">
                         <label for="email" data-error="Please enter a valid email" data-success="right">Email</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="password" type="password" class="validate">
+                        <input id="password" type="password" name="password" class="validate">
                         <label for="password">Password</label>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a id="submitLogin" href="#!" class="modal-action modal-close waves-effect waves-green btn" type="submit"><i class="material-icons left">input</i>Submit</a>
+                    <a id="submitLogin" class="modal-action modal-close waves-effect waves-green btn" type="submit"><i class="material-icons left">input</i>Submit</a>
                 </div>
             </form>
         </div>
@@ -44,31 +44,31 @@
     </div>
     <div class="modal-content">
         <div class="row">
-            <form class="col s12" id="signupForm" method="post">
+            <form class="col s12" id="signupForm">
                 <div class="row">
                     <div class="input-field col s6">
-                        <input placeholder="First Name" id="first_name" type="text" class="validate">
+                        <input placeholder="First Name" id="first_name" name="firstName" type="text" class="validate">
                         <label for="first_name">First Name</label>
                     </div>
                     <div class="input-field col s6">
-                        <input placeholder="Last Name" id="last_name" type="text" class="validate">
+                        <input placeholder="Last Name" id="last_name" name="lastName" type="text" class="validate">
                         <label for="last_name">Last Name</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="email" type="email" class="validate">
+                        <input id="email" type="email" name="email" class="validate">
                         <label for="email" data-error="Please enter a valid email" data-success="right">Email</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="password" type="password" class="validate">
+                        <input id="password" type="password" name="password" class="validate">
                         <label for="password">Password</label>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a id="submitSignup" href="#!" class="waves-effect waves-green btn" type="submit"><i class="material-icons left">input</i>Submit</a>
+                    <a id="submitSignup" class="waves-effect waves-green btn" type="submit"><i class="material-icons left">input</i>Submit</a>
                 </div>
             </form>
         </div>

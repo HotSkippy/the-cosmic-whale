@@ -30,10 +30,12 @@ var schema = new Schema({
     }
 });
 
-schema.post('remove', (message) => {
-    User.findById(message.user, (err, user) => {
-        user.messages.pull(message)
+schema.post('remove', (blog) => {
+    User.findById(blog.user, (err, user) => {
+      if (blog.user.isAdmin === true){
+        user.blog.pull(blog)
         user.save();
+      } 
     });
 });
 

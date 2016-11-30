@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 const Blog = require('../models/blog');
 
-// INDEX ROUTE
+// INDEX
 router.get("/", function(req, res){
     Blog.find({}, function(err, blogs){
         if(err){
@@ -15,12 +15,12 @@ router.get("/", function(req, res){
     });
 });
 
-// NEW ROUTE
+// NEW
 router.get("/new", function (req, res){
    res.render("blogs/new"); 
 });
 
-// CREATE ROUTE
+// CREATE
 router.post("/", function(req, res){
     req.body.body = req.sanitize(req.body.body);
     Blog.create(req.body, function(err, newBlog){
@@ -32,7 +32,7 @@ router.post("/", function(req, res){
     });
 });
 
-// SHOW ROUTE
+// SHOW
 router.get("/:id", function(req, res){
     Blog.findById(req.params.id, function(err, foundBlog){
         if(err){
@@ -43,7 +43,7 @@ router.get("/:id", function(req, res){
     });
 });
 
-// EDIT ROUTE
+// EDIT
 router.get("/:id/edit", function(req, res) {
     Blog.findById(req.params.id, function(err, foundBlog){
         if(err){
@@ -54,7 +54,7 @@ router.get("/:id/edit", function(req, res) {
     });
 });
 
-// UPDATE ROUTE
+// UPDATE
 router.put("/:id", function(req, res){
     req.body.content = req.sanitize(req.body.content);
     Blog.findByIdAndUpdate(req.params.id, req.body, function(err, updatedBlog){
@@ -66,16 +66,15 @@ router.put("/:id", function(req, res){
     });
 });
 
-// // DELETE ROUTE
-// router.delete("/blogs/:id", function(req, res){
-//     Blog.findByIdAndRemove(req.params.id, function(err){
-//         if(err){
-//             res.redirect("/blogs");
-//         } else 
-//             res.redirect("/blogs");
-//         }
-//     });
-// });
-
+// DELETE
+router.delete("/:id", function(req, res){
+    Blog.findByIdAndRemove(req.params.id, function(err){
+        if(err){
+            res.redirect("/blogs");
+        } else {
+            res.redirect("/blogs");
+        }
+    });
+});
 
 module.exports = router;

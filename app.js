@@ -20,7 +20,6 @@ const expressSanitizer = require('express-sanitizer');
 const methodOverride = require('method-override');
 
 const app = express();
-// mongoose.connect(`mongodb://localhost:27017`)
 mongoose.connect(`mongodb://starsquid:souptime@ds113668.mlab.com:13668/the_cosmic_whale`)
 
 const index = require('./routes/index');

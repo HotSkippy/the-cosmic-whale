@@ -18,7 +18,8 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const expressSanitizer = require('express-sanitizer');
 const methodOverride = require('method-override');
-
+const hbs = require('hbs');
+const moment = require('moment');
 const app = express();
 // mongoose.connect(`mongodb://localhost:27017`)
 mongoose.connect(`mongodb://starsquid:souptime@ds113668.mlab.com:13668/the_cosmic_whale`)
@@ -53,6 +54,15 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// hbs helpers
+ hbs.registerHelper('toDate', function(date){
+   return date.toDateString();
+ });
+
+  hbs.registerHelper('toSubstring', function(str){
+   return str.substring(0,100) + "...";
+ });
 
 // set up CORS
 app.use((req, res, next) => {

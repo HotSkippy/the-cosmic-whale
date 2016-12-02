@@ -21,7 +21,6 @@ const methodOverride = require('method-override');
 const hbs = require('hbs');
 const moment = require('moment');
 const app = express();
-// mongoose.connect(`mongodb://localhost:27017`)
 mongoose.connect(`mongodb://starsquid:souptime@ds113668.mlab.com:13668/the_cosmic_whale`)
 
 const index = require('./routes/index');

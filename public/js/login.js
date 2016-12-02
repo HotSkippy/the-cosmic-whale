@@ -13,7 +13,7 @@ $(document).ready(function() {
 //             console.log(xhr, "xhr recieved");
 //         })
 // })
-// //
+//
 // $('#submitSignup').click(function(e) {
 //     e.preventDefault();
 //     var jsonifiy = {};

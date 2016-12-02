@@ -27,6 +27,12 @@ form{
 .blogImg{
   width: 400px;
 }
+
 .blogDate{
   text-align: right;
+}
+
+.readmore{
+  float: right;
+  margin-top: 80px;
 }

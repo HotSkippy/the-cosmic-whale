@@ -1,7 +1,11 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 
+}
+
+nav {
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 a {

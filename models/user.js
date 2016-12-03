@@ -8,7 +8,8 @@ const Schema = mongoose.Schema;
 const schema = new Schema({
     local: {
         firstName: {
-            type: String
+            type: String,
+            required: true
         },
         lastName: {
             type: String
@@ -22,20 +23,16 @@ const schema = new Schema({
             required: true,
             unique: true
         },
-        isAdmin: {
-            type: Boolean,
-            default: false,
-            required: true
-        },
-        // comments: [{
-        //     type: Schema.Types.ObjectId,
-        //     ref: 'Message'
-        // }],
         created: {
             type: Date,
             default: Date.now
         }
-    }
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+      required: true
+    },
 });
 
 // schema.plugin(passportLocalMongoose)

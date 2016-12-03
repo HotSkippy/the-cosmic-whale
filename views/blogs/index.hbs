@@ -1,5 +1,7 @@
 <div class="container header">
   <h1 class = "center">Blog Page</h1>
+  <!-- {{#if user.isAdmin}} -->
+  <!-- {{/if}} -->
   <a href="/blogs/new" class="waves-effect waves-light btn green accent-3">New Blog</a>
 </div>
 {{#each blogs}}
@@ -19,6 +21,4 @@
         <hr>
     </div>
 </article>
-
-
 {{/each}}

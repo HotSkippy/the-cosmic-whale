@@ -13,8 +13,8 @@ module.exports = function(passport) {
     passport.deserializeUser((user, done) => {
         User.findById(user._id, (err, user) => {
           delete user.local.password;
-          delete user.local.isAdmin;
-          console.log(user.local.password, "deserializeUser");
+          // delete user.local.isAdmin;
+          console.log(user.local.firstName, "deserializeUser");
             done(err, user);
         });
     });

@@ -1,4 +1,4 @@
-  {{!--<span> {{ blog.created.toDateString() }}</span>--}}
+  {{!--<span> {{ blog.created.toDateString() }}{{!--</span>--}}
 <div class="container center-align">
     <div class="row">
         <div class="col s12 m12">
@@ -10,13 +10,49 @@
             <div class="card-content">
                 <p>{{blog.body}}</p>
             </div>
-            <form action = "/blogs/{{blog._id}}/edit" method = "GET">
-                <button class="waves-effect waves-light btn ">Edit</button>
-            </form>
+            <!-- {{#if user.isAdmin}}
+            {{/if}} -->
+            <button data-target="commentModal" class="btn waves-effect waves-light">
+            <i class="material-icons left">comment</i>Comment</button>
+            <!-- {{#if user.isAdmin}}
+            {{/if}} -->
+            <a href="/blogs/{{blog._id}}/edit" class="waves-effect waves-light btn ">
+              <i class="material-icons left">mode_edit</i>Edit</a>
             <form action = "/blogs/{{blog._id}}?_method=DELETE" method = "POST">
-                <button class="waves-effect waves-light btn red darken-4 right-align">Delete</button>
+                <button class="waves-effect waves-light btn red darken-4 right-align">
+                  <i class="material-icons left">delete_forever</i>Delete</button>
             </form>
             </div>
         </div>
     </div>
 </div>
+
+<div id="commentModal" class="modal">
+    <div>
+        <a class="btn-floating btn-small waves-effect waves-light red right exit modal-action modal-close">
+            <i class="material-icons">eject</i></a>
+    </div>
+    <div class="modal-content">
+        <div class="row">
+            <form class="col s12" action="/blog/{{blog._id}}/comment" method="post">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="currUser" type="hidden" name="currUser" class="validate" required="true">
+                        <h5>{{user.local.firstName}} {{user.local.lastName}}</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="comment" type="text" name="comment" class="validate" required="true">
+                        <label for="comment">Comment</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="submitLogin" class="modal-action modal-close waves-effect waves-green btn" type="submit"><i class="material-icons left">input</i>Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="/js/blogs/show.js" charset="utf-8"></script>

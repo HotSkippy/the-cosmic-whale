@@ -30,4 +30,4 @@ schema.post('remove', (comment) => {
     });
 });
 
-module.exports = mongoose.model('Blog', schema);
+module.exports = mongoose.model('Comment', schema);

@@ -4,6 +4,7 @@
     <p>First Name: {{ user.local.firstName }}</p>
     <p>password: {{ user.local.password }}</p>
     <p>user_id: {{ user._id }}</p>
+    <p>is Admin: {{ user.local.isAdmin }}</p>
     <h1>Login or Signup</h1>
     <button data-target="loginModal" class="btn waves-effect waves-light">
     <i class="material-icons left">account_circle</i>Login</button>
@@ -21,13 +22,13 @@
             <form class="col s12" action="/auth/login" method="post">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="email" type="email" name="email" class="validate">
+                        <input id="email" type="email" name="email" class="validate" required="true">
                         <label for="email" data-error="Please enter a valid email" data-success="Welcome!">Email</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="password" type="password" name="password" class="validate">
+                        <input id="password" type="password" name="password" class="validate" required="true">
                         <label for="password">Password</label>
                     </div>
                 </div>
@@ -49,23 +50,23 @@
             <form class="col s12" id="signupForm" action="/auth/signup" method="post">
                 <div class="row">
                     <div class="input-field col s6">
-                        <input placeholder="First Name" id="firstName" name="firstName" type="text" class="validate">
+                        <input placeholder="First Name" id="firstName" name="firstName" type="text" class="validate" required="true">
                         <label for="firstName">First Name</label>
                     </div>
                     <div class="input-field col s6">
-                        <input placeholder="Last Name" id="lastName" name="lastName" type="text" class="validate">
+                        <input placeholder="Last Name" id="lastName" name="lastName" type="text" class="validate" required="true">
                         <label for="lastName">Last Name</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="email" type="email" name="email" class="validate">
+                        <input id="email" type="email" name="email" class="validate" required="true">
                         <label for="email" data-error="Please enter a valid email" data-success="right">Email</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="password" type="password" name="password" class="validate">
+                        <input id="password" type="password" name="password" class="validate" required="true">
                         <label for="password">Password</label>
                     </div>
                 </div>

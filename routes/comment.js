@@ -2,11 +2,12 @@
 
 const express = require('express');
 const router = express.Router();
+const Comment = require('../models/comment');
 const Blog = require('../models/blog');
 
 // INDEX
 router.get("/", function(req, res){
-    Blog.find({}, function(err, blogs){
+    Comment.find({}, function(err, blogs){
         if(err){
             console.log(err);
         } else {
@@ -23,7 +24,7 @@ router.get("/new", function (req, res){
 // CREATE
 router.post("/", function(req, res){
     req.body.body = req.sanitize(req.body.body);
-    Blog.create(req.body, function(err, newBlog){
+    Comment.create(req.body, function(err, newComment){
         if(err){
             res.render("blogs/new");
         } else {
@@ -35,12 +36,12 @@ router.post("/", function(req, res){
 // SHOW
 router.get("/:id", function(req, res){
   console.log(req.user, "i am here");
-    Blog.findById(req.params.id, function(err, foundBlog){
+    Comment.findById(req.params.id, function(err, foundComment){
         if(err){
             res.redirect("/blogs");
         } else {
             res.render("blogs/show", {
-              blog: foundBlog,
+              blog: foundComment,
               user: req.user});
         }
     });
@@ -48,11 +49,11 @@ router.get("/:id", function(req, res){
 
 // EDIT
 router.get("/:id/edit", function(req, res) {
-    Blog.findById(req.params.id, function(err, foundBlog){
+    Comment.findById(req.params.id, function(err, foundComment){
         if(err){
             res.render("/blogs");
         } else {
-            res.render("blogs/edit", {blog: foundBlog});
+            res.render("blogs/edit", {blog: foundComment});
         }
     });
 });
@@ -60,7 +61,7 @@ router.get("/:id/edit", function(req, res) {
 // UPDATE
 router.put("/:id", function(req, res){
     req.body.content = req.sanitize(req.body.content);
-    Blog.findByIdAndUpdate(req.params.id, req.body, function(err, updatedBlog){
+    Comment.findByIdAndUpdate(req.params.id, req.body, function(err, updatedComment){
         if(err){
             res.redirect("/blogs");
         } else {
@@ -71,7 +72,7 @@ router.put("/:id", function(req, res){
 
 // DELETE
 router.delete("/:id", function(req, res){
-    Blog.findByIdAndRemove(req.params.id, function(err){
+    Comment.findByIdAndRemove(req.params.id, function(err){
         if(err){
             res.redirect("/blogs");
         } else {

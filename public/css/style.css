@@ -29,7 +29,15 @@ form{
 }
 
 .blogDate{
-  text-align: right;
+  float: right;
+}
+
+.blogText{
+  font-size: 24px;
+}
+
+.blogIndex{
+  margin-top: 10px;
 }
 
 .readmore{

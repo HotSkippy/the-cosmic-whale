@@ -2,23 +2,59 @@
   <h1 class = "center">Blog Page</h1>
   <!-- {{#if user.isAdmin}} -->
   <!-- {{/if}} -->
-  <a href="/blogs/new" class="waves-effect waves-light btn green accent-3">New Blog</a>
+<button data-target="newBlogModal" class="btn waves-effect waves-light green accent-3">
+<i class="material-icons left">mode_edit</i>New Blog</button>
+
+<div id="newBlogModal" class="modal">
+    <div>
+        <a class="btn-floating btn-small waves-effect waves-light red right exit modal-action modal-close">
+            <i class="material-icons">eject</i></a>
+    </div>
+    <div class="modal-content">
+        <div class="row">
+            <form class="col s12" id="blogForm" action="/blogs" method="post">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="Title" placeholder="Title" name="title" type="text" class="validate" required="true">
+                        <label for="Title">Title</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="Image" placeholder="Image URL" type="text" name="image" class="validate">
+                        <label for="Image">Image</label>
+                    </div>
+                </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <textarea id="textarea1" class="materialize-textarea" name="body"></textarea>
+                        <label for="textarea1">Post content</label>
+                      </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="submitSignup" class="waves-effect waves-green btn" type="submit"><i class="material-icons left">input</i>Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
+
+</div>
+
+<div class="container blogIndex">
 {{#each blogs}}
-<article>
-  <div class="container">
+  <article>
     <div class="row">
       <div class="col s12 l4">
           <img class ="blogImg responsive-img" src="{{this.image}}">
       </div>
-      <div class = "col l4">
+        <span class = blogDate>{{toDate this.created}}</span>
           {{this.title}}
-      </div>
-        <p class = blogDate>{{toDate this.created}}</p>
-        <p>{{toSubstring this.body}}</p>
+        <p class ="blogText">{{toSubstring this.body}}</p>
         <a href="/blogs/{{this._id}}" class="waves-effect waves-light btn readmore">Read More</a>
       </div>
         <hr>
-    </div>
-</article>
+  </article>
 {{/each}}
+</div>
+<script src="/js/blogs/index.js" charset="utf-8"></script>

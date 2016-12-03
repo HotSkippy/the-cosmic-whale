@@ -60,7 +60,7 @@ app.use(express.static(path.join(__dirname, 'public')));
  });
 
   hbs.registerHelper('toSubstring', function(str){
-   return str.substring(0,100) + "...";
+   return str.substring(0,200) + "...";
  });
 
 // set up CORS

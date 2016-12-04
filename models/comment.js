@@ -5,17 +5,16 @@ var Schema = mongoose.Schema;
 var User = require('./user')
 
 var schema = new Schema({
-    body: {
+    text: {
         type: String,
         required: true
     },
-    id: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    },
-    user: {
-      type: String,
-      required: true
+    author: {
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+        username: String
     },
     created: {
       type: Date,
@@ -23,11 +22,11 @@ var schema = new Schema({
     }
 });
 
-schema.post('remove', (comment) => {
-    User.findById(comment.user, (err, user) => {
-        user.comment.pull(comment)
-        user.save();
-    });
-});
+// schema.post('remove', (comment) => {
+//     User.findById(comment.user, (err, user) => {
+//         user.comment.pull(comment)
+//         user.save();
+//     });
+// });
 
 module.exports = mongoose.model('Comment', schema);

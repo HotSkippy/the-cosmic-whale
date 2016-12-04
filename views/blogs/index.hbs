@@ -1,11 +1,13 @@
 <div class="container header">
   <h1 class = "center">Blog Page</h1>
-  <!-- {{#if user.isAdmin}} -->
-  <!-- {{/if}} -->
+
 <a href="/" class="waves-effect waves-light btn purple darken-2">
 <i class="material-icons left">replay</i>Go Back</a>
+
+{{#if currentUser.isAdmin}}
 <button data-target="newBlogModal" class="btn waves-effect waves-light green accent-3 newBlog">
 <i class="material-icons left">mode_edit</i>New Blog</button>
+{{/if}}
 
 <div id="newBlogModal" class="modal">
     <div>
@@ -53,7 +55,7 @@
         <span class = "blogDate">{{toDate this.created}}</span>
         <p class="blogTitle">{{this.title}}</p>
         <hr>
-        <p class ="blogText">{{toSubstring this.body}}</p>
+        <p class ="blogText">{{{toSubstring this.body}}}</p>
         <a href="/blogs/{{this._id}}" class="waves-effect waves-light btn readmore">Read More</a>
       </div>
         <hr>

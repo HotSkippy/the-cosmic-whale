@@ -25,6 +25,7 @@ mongoose.connect(`mongodb://starsquid:souptime@ds113668.mlab.com:13668/the_cosmi
 
 const index = require('./routes/index');
 const blog = require('./routes/blog');
+const comment = require('./routes/comment.js');
 const auth = require('./routes/auth')(app, passport);
 
 
@@ -54,6 +55,13 @@ app.use(passport.session());
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+//pass local variable // *ask matt about his local user*
+app.use(function(req, res, next){
+  res.locals.currentUser = req.user;
+  next();
+});
+
 // hbs helpers
  hbs.registerHelper('toDate', function(date){
    return date.toDateString();
@@ -74,6 +82,7 @@ app.use((req, res, next) => {
 app.use('/', index);
 app.use('/blogs', blog);
 app.use('/auth', auth);
+app.use('/blogs/:id/comment', comment);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

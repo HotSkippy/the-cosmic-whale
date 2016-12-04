@@ -24,12 +24,13 @@ form{
   font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
 
-.blogImg{
+.indexBlogImg{
   width: 400px;
 }
 
 .blogDate{
   float: right;
+  margin-top: 5px;
 }
 
 .blogText{
@@ -40,7 +41,28 @@ form{
   margin-top: 10px;
 }
 
+.blogPost{
+  margin: auto;
+}
+
+.blogTitle{
+  font-size: 36px;
+}
+
 .readmore{
   float: right;
-  margin-top: 80px;
+  margin-top: 20px;
+}
+
+.newBlog{
+  float: right;
+}
+
+hr { 
+  border: 0; 
+  height: 1px; 
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
 }

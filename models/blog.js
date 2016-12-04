@@ -16,14 +16,14 @@ var schema = new Schema({
         type: String,
         required: true
     },
-    // user: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'User'
-    // },
-    // comments: [{
-    //   type: Schema.Types.ObjectId,
-    //   ref: 'Comment'
-    // }],
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    comments: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Comment'
+    }],
     created: {
       type: Date,
       default: Date.now

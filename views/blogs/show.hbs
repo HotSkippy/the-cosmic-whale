@@ -1,4 +1,3 @@
-
 <div class="container center blogPost">
         <div class="col s12 m10 l4">
             <div class="row">
@@ -10,23 +9,23 @@
                 <hr>
                 <span class ="blogDate">{{ toDate blog.created }}</span>
                 <div class="card-content">
-                <p class="blogText">{{blog.body}}</p>
+                <p class="blogText">{{{blog.body}}}</p>
                 </div>
                 <hr>
                 <a href="/blogs" class="waves-effect waves-light btn purple darken-2">
                 <i class="material-icons left">replay</i>Go Back</a>
-                <!-- {{#if user.isAdmin}}
-                {{/if}} -->
+                {{#if user}}
                 <button data-target="commentModal" class="btn waves-effect waves-light">
                 <i class="material-icons left">comment</i>Comment</button>
-                <!-- {{#if user.isAdmin}}
-                {{/if}} -->
+                {{/if}}
+                {{#if user.isAdmin}}
                 <button data-target="editBlogModal" class="btn waves-effect waves-light">
                 <i class="material-icons left">mode_edit</i>Edit</button>
                 <form action = "/blogs/{{blog._id}}?_method=DELETE" method = "POST">
                     <button class="waves-effect waves-light btn red darken-4 right-align">
                     <i class="material-icons left">delete_forever</i>Delete</button>
                 </form>
+                {{/if}}
             </div>
         </div>
     </div>
@@ -74,7 +73,7 @@
     </div>
     <div class="modal-content">
         <div class="row">
-            <form class="col s12" action="/blog/{{blog._id}}/comment" method="post">
+            <form class="col s12" action="/blogs/{{blog._id}}/comment" method="post">
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="currUser" type="hidden" name="currUser" class="validate" required="true">
@@ -83,7 +82,7 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="comment" type="text" name="comment" class="validate" required="true">
+                        <input id="comment" type="text" name="text" class="validate" required="true">
                         <label for="comment">Comment</label>
                     </div>
                 </div>

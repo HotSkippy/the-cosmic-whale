@@ -42,13 +42,16 @@ form{
 }
 
 .blogPost{
-  margin: auto;
+  max-width:800px;
 }
 
 .blogTitle{
   font-size: 36px;
 }
 
+.btn{
+  margin: 5px;
+}
 .readmore{
   float: right;
   margin-top: 20px;

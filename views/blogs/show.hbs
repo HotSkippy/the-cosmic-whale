@@ -1,28 +1,66 @@
-  {{!--<span> {{ blog.created.toDateString() }}{{!--</span>--}}
-<div class="container center-align">
-    <div class="row">
-        <div class="col s12 m12">
-            <div class="card">
-            <div class="card-image">
-                <img src="{{blog.image}}">
-                <span class="card-title">{{blog.title}}</span>
+
+<div class="container center blogPost">
+        <div class="col s12 m10 l4">
+            <div class="row">
+                <div class="card">
+                <div class="card-image">
+                    <img src="{{blog.image}}">
+                    <span class="card-title">{{blog.title}}</span>
+                </div>
+                <span class ="blogDate">{{ toDate blog.created }}</span>
+                <div class="card-content">
+                <p class="blogText">{{blog.body}}</p>
+                </div>
+                <a href="/blogs" class="waves-effect waves-light btn purple darken-2">
+                <i class="material-icons left">replay</i>Go Back</a>
+                <!-- {{#if user.isAdmin}}
+                {{/if}} -->
+                <button data-target="commentModal" class="btn waves-effect waves-light">
+                <i class="material-icons left">comment</i>Comment</button>
+                <!-- {{#if user.isAdmin}}
+                {{/if}} -->
+                <button data-target="editBlogModal" class="btn waves-effect waves-light">
+                <i class="material-icons left">mode_edit</i>Edit</button>
+                <form action = "/blogs/{{blog._id}}?_method=DELETE" method = "POST">
+                    <button class="waves-effect waves-light btn red darken-4 right-align">
+                    <i class="material-icons left">delete_forever</i>Delete</button>
+                </form>
             </div>
-            <div class="card-content">
-                <p>{{blog.body}}</p>
-            </div>
-            <!-- {{#if user.isAdmin}}
-            {{/if}} -->
-            <button data-target="commentModal" class="btn waves-effect waves-light">
-            <i class="material-icons left">comment</i>Comment</button>
-            <!-- {{#if user.isAdmin}}
-            {{/if}} -->
-            <a href="/blogs/{{blog._id}}/edit" class="waves-effect waves-light btn ">
-              <i class="material-icons left">mode_edit</i>Edit</a>
-            <form action = "/blogs/{{blog._id}}?_method=DELETE" method = "POST">
-                <button class="waves-effect waves-light btn red darken-4 right-align">
-                  <i class="material-icons left">delete_forever</i>Delete</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="editBlogModal" class="modal">
+    <div>
+        <a class="btn-floating btn-small waves-effect waves-light red right exit modal-action modal-close">
+            <i class="material-icons">eject</i></a>
+    </div>
+    <div class="modal-content">
+        <div class="row">
+            <form class="col s12" id="blogForm" action="/blogs/{{blog._id}}?_method=PUT" method="post">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="Title" name="title" type="text" class="validate" required="true" value="{{blog.title}}">
+                        <label for="Title">Title</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="Image" placeholder="Image URL" type="text" name="image" class="validate" value="{{blog.image}}">
+                        <label for="Image">Image</label>
+                    </div>
+                </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <textarea id="textarea1" class="materialize-textarea" name="body">{{blog.body}}</textarea>
+                        <label for="textarea1">Post content</label>
+                      </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="submitSignup" class="waves-effect waves-green btn" type="submit"><i class="material-icons left">input</i>Submit</button>
+                </div>
             </form>
-            </div>
         </div>
     </div>
 </div>

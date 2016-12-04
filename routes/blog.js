@@ -16,9 +16,9 @@ router.get("/", function(req, res){
 });
 
 // NEW
-router.get("/new", function (req, res){
-   res.render("blogs/new");
-});
+// router.get("/new", function (req, res){
+//    res.render("blogs/new");
+// });
 
 // CREATE
 router.post("/", function(req, res){
@@ -46,16 +46,16 @@ router.get("/:id", function(req, res){
     });
 });
 
-// EDIT
-router.get("/:id/edit", function(req, res) {
-    Blog.findById(req.params.id, function(err, foundBlog){
-        if(err){
-            res.render("/blogs");
-        } else {
-            res.render("blogs/edit", {blog: foundBlog});
-        }
-    });
-});
+// // EDIT
+// router.get("/:id/edit", function(req, res) {
+//     Blog.findById(req.params.id, function(err, foundBlog){
+//         if(err){
+//             res.render("/blogs");
+//         } else {
+//             res.render("blogs/edit", {blog: foundBlog});
+//         }
+//     });
+// });
 
 // UPDATE
 router.put("/:id", function(req, res){

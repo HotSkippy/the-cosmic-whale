@@ -76,8 +76,12 @@
             <form class="col s12" action="/blogs/{{blog._id}}/comment" method="post">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="currUser" type="hidden" name="currUser" class="validate" required="true">
+                        <input id="currUser" type="hidden" name="currUser" class="validate" required="true" value="{{user}}">
                         <h5>{{user.local.firstName}} {{user.local.lastName}}</h5>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="blog_id" type="hidden" name="blog_id" class="validate" required="true" value="{{blog._id}}">
+                        <h5>blog id{{ blog._id }}</h5>
                     </div>
                 </div>
                 <div class="row">

@@ -8,7 +8,10 @@ const Blog = require('../models/blog');
 // CREATE
 router.post("/", function(req, res){
     req.body.comment = req.sanitize(req.body.comment);
-    Blog.findById(req.params.id, function(err, foundBlog){
+    console.log("post route hit");
+    console.log(req.body, "passing me in");
+    Blog.findById(req.body.blog_id, function(err, foundBlog){
+      console.log(foundBlog, "find by id occured");
         if(err){
             console.log(err);
             res.redirect("/blogs");
@@ -17,6 +20,7 @@ router.post("/", function(req, res){
                 if(err){
                     res.redirect("/blogs");
                 } else {
+                  console.log(foundBlog.comments, "blah I am here");
                     //save id and username
                     newComment.author.id = req.user._id;
                     newComment.author.username = req.user.local.firstName;
@@ -24,9 +28,10 @@ router.post("/", function(req, res){
                     //push comment to blog and save
                     foundBlog.comments.push(newComment);
                     foundBlog.save();
+                    console.log(foundBlog, "should be saving");
                 }
-                res.redirect("back");
             });
+            // res.redirect("back");
         }
     })
 });

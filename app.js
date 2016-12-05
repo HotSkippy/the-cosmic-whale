@@ -56,7 +56,7 @@ app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-//pass local variable // *ask matt about his local user*
+//pass local user variable
 app.use(function(req, res, next){
   res.locals.currentUser = req.user;
   next();
@@ -82,7 +82,7 @@ app.use((req, res, next) => {
 app.use('/', index);
 app.use('/blogs', blog);
 app.use('/auth', auth);
-app.use('/blogs/:id/comment', comment);
+app.use('/blogs', comment);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

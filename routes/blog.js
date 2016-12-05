@@ -34,14 +34,11 @@ router.post("/", function(req, res){
 
 // SHOW
 router.get("/:id", function(req, res){
-  console.log(req.user, "i am here");
-    Blog.findById(req.params.id, function(err, foundBlog){
+    Blog.findById(req.params.id).populate("comments").exec(function(err, foundBlog){
         if(err){
             res.redirect("/blogs");
         } else {
-            res.render("blogs/show", {
-              blog: foundBlog,
-              user: req.user});
+            res.render("blogs/show", {blog: foundBlog});
         }
     });
 });

@@ -6,14 +6,15 @@ const Comment = require('../models/comment');
 const Blog = require('../models/blog');
 
 // CREATE
-router.post("/", function(req, res){
+router.post("/:id/comment", function(req, res){
     req.body.comment = req.sanitize(req.body.comment);
     Blog.findById(req.params.id, function(err, foundBlog){
         if(err){
             console.log(err);
             res.redirect("/blogs");
         } else {
-            Comment.create(req.body.comment, function(err, newComment){
+            console.log(foundBlog);
+            Comment.create(req.body, function(err, newComment){
                 if(err){
                     res.redirect("/blogs");
                 } else {
@@ -24,8 +25,8 @@ router.post("/", function(req, res){
                     //push comment to blog and save
                     foundBlog.comments.push(newComment);
                     foundBlog.save();
+            res.redirect("/blogs/" + foundBlog._id);
                 }
-                res.redirect("back");
             });
         }
     })

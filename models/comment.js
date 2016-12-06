@@ -11,7 +11,7 @@ var schema = new Schema({
     },
     author: {
         id: {
-            type: mongoose.Schema.Types.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: "User"
         },
         username: String

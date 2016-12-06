@@ -38,6 +38,7 @@ router.get("/:id", function(req, res){
         if(err){
             res.redirect("/blogs");
         } else {
+            console.log(foundBlog);
             res.render("blogs/show", {blog: foundBlog});
         }
     });

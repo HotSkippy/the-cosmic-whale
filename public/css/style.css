@@ -61,6 +61,9 @@ form{
   float: right;
 }
 
+.commentUser{
+  float: left;
+}
 hr { 
   border: 0; 
   height: 1px; 

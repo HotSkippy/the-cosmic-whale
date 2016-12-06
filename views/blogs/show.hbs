@@ -31,16 +31,18 @@
         {{#each blog.comments}}
         <div class="row">
             {{!--<div class="col s12 m6">--}}
-            <div class="card blue-grey darken-1">
-                <div class="card-content white-text">
-                    <span class="blogDate">{{this.created}}
-                    <span class="card-title">{{this.author.username}}</span>
+            <div class="card">
+                <div class="card-content">
+                    <span class="blogDate">{{toDate this.created}}</span>
+                    <span class="commentUser"><strong>{{this.author.username}}</strong></span>
                     <p>{{this.text}}</p>
                 </div>
+                {{#if currentUser.isAdmin }}
                 <div class="card-action">
                     <a href="#">Edit</a>
                     <a href="#">Delete</a>
                 </div>
+                {{/if}}
             </div>
             </div>
         </div>
@@ -93,17 +95,8 @@
             <form class="col s12" action="/blogs/{{blog._id}}/comment" method="post">
                 <div class="row">
                     <div class="input-field col s12">
-<<<<<<< HEAD
                         <input id="currUser" type="hidden" name="currUser" class="validate" required="true">
-                        <h5>{{currentUser.firstName}} {{currentUser.lastName}}</h5>
-=======
-                        <input id="currUser" type="hidden" name="currUser" class="validate" required="true" value="{{user}}">
-                        <h5>{{user.local.firstName}} {{user.local.lastName}}</h5>
->>>>>>> a34e5132744091cdf4b3b09e906f7dac36032962
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="blog_id" type="hidden" name="blog_id" class="validate" required="true" value="{{blog._id}}">
-                        <h5>blog id{{ blog._id }}</h5>
+                        <h5>{{currentUser.local.firstName}} {{currentUser.local.lastName}}</h5>
                     </div>
                 </div>
                 <div class="row">

@@ -1,0 +1,17 @@
+html { 
+  background: url("/images/stars2.jpg") no-repeat center center fixed; 
+  background-color: black;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+  
+#booster {
+    margin-left: 20%;
+    height: 400px;
+}
+
+.centered {
+    margin-top: 10%;
+}

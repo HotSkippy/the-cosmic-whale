@@ -24,7 +24,7 @@ router.post("/", function(req, res){
                     //push comment to blog and save
                     foundBlog.comments.push(newComment);
                     foundBlog.save();
-            res.redirect("/blogs/" + foundBlog._id);
+                    res.redirect("/blogs/" + foundBlog._id);
                 }
             });
         }

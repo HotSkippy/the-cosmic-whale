@@ -28,6 +28,10 @@ form{
   width: 400px;
 }
 
+.logoBlogImg{
+  max-width: 500px;
+}
+
 .blogDate{
   float: right;
   margin-top: 5px;

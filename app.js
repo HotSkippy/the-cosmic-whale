@@ -25,8 +25,9 @@ mongoose.connect(`mongodb://starsquid:souptime@ds113668.mlab.com:13668/the_cosmi
 
 const index = require('./routes/index');
 const blog = require('./routes/blog');
-const comment = require('./routes/comment.js');
+const comment = require('./routes/comment');
 const auth = require('./routes/auth')(app, passport);
+const projects = require('./routes/projects')
 
 
 // view engine setup
@@ -83,6 +84,7 @@ app.use('/', index);
 app.use('/blogs', blog);
 app.use('/auth', auth);
 app.use('/blogs/:id/comment', comment);
+app.use('/projects', projects);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
